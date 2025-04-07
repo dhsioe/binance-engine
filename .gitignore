@@ -1,0 +1,5 @@
+/vendor
+.phpunit.result.cache
+.idea/
+/src/test_*
+/tests/rest/ApiTestCase.php

@@ -1,0 +1,21 @@
+{
+  "name": "hsioe/quant-binance-engine",
+  "type": "library",
+  "license": "MIT",
+  "description": "Webman plugin hsioe/quant-binance-engine",
+  "require": {
+    "php": ">=8.1",
+    "guzzlehttp/guzzle": "*",
+    "workerman/workerman": "v5.0.0-rc.3",
+    "workerman/globaldata": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hsioe\\QuantBinance\\": "src",
+      "Hsioe\\QuantBinance\\Tests\\": "tests"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.6"
+  }
+}
