@@ -38,6 +38,34 @@ class TradeApi extends ApiBase
     }
     
     /**
+     * 修改订单
+     *
+     * @link https://developers.binance.com/docs/zh-CN/derivatives/usds-margined-futures/trade/rest-api/Modify-Order
+     * @param OrderItem $orderItem
+     * @return array
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function modifyOrder(OrderItem $orderItem): array
+    {
+        return $this->_request('/fapi/v1/order', 'PUT', $orderItem->toArray());
+    }
+    
+    /**
+     * 撤销订单
+     *
+     * @link https://developers.binance.com/docs/zh-CN/derivatives/usds-margined-futures/trade/rest-api/Cancel-Order
+     * @param OrderItem $orderItem
+     * @return array
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function cancelOrder(OrderItem $orderItem): array
+    {
+        return $this->_request('/fapi/v1/order', 'DELETE', $orderItem->toArray());
+    }
+    
+    /**
      * 下单接口
      * @param array<OrderItem> $orders
      * @return array
