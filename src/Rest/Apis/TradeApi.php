@@ -14,6 +14,7 @@ use Hsioe\QuantBinance\Exception\ApiException;
 use Hsioe\QuantBinance\Rest\Apis\Req\LeverageReq;
 use Hsioe\QuantBinance\Rest\Apis\Req\OrderItem;
 use Hsioe\QuantBinance\Rest\Apis\Req\TradeHistoryReq;
+use Hsioe\QuantBinance\Rest\Apis\Req\UpdateOrderReq;
 
 class TradeApi extends ApiBase
 {
@@ -41,28 +42,30 @@ class TradeApi extends ApiBase
      * 修改订单
      *
      * @link https://developers.binance.com/docs/zh-CN/derivatives/usds-margined-futures/trade/rest-api/Modify-Order
-     * @param OrderItem $orderItem
+     * @param UpdateOrderReq $req
      * @return array
      * @throws ApiException
      * @throws GuzzleException
      */
-    public function modifyOrder(OrderItem $orderItem): array
+    public function updateOrder(UpdateOrderReq $req): array
     {
-        return $this->_request('/fapi/v1/order', 'PUT', $orderItem->toArray());
+        return $this->_request('/fapi/v1/order', 'PUT', $req->toArray());
     }
     
     /**
-     * 撤销订单
+     * 撤销委托单
      *
      * @link https://developers.binance.com/docs/zh-CN/derivatives/usds-margined-futures/trade/rest-api/Cancel-Order
-     * @param OrderItem $orderItem
+     * @param string $symbol
+     * @param string $orderId
      * @return array
      * @throws ApiException
      * @throws GuzzleException
      */
-    public function cancelOrder(OrderItem $orderItem): array
+    public function cancelOrder(string $symbol, string $orderId): array
     {
-        return $this->_request('/fapi/v1/order', 'DELETE', $orderItem->toArray());
+        $params = ['symbol' => $symbol, 'orderId' => $orderId];
+        return $this->_request('/fapi/v1/order', 'DELETE', $params);
     }
     
     /**

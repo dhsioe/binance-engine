@@ -13,6 +13,7 @@ use Exception;
 use Hsioe\QuantBinance\Rest\ApiRequest;
 use Hsioe\QuantBinance\Rest\Apis\AccountApi;
 use Hsioe\QuantBinance\Rest\Apis\CmApi;
+use Hsioe\QuantBinance\Rest\Apis\MarketApi;
 use Hsioe\QuantBinance\Rest\Apis\TradeApi;
 
 
@@ -22,6 +23,7 @@ use Hsioe\QuantBinance\Rest\Apis\TradeApi;
  * @class BinanceApi
  * @method static AccountApi account(ApiRequest $request)
  * @method static TradeApi trade(ApiRequest $request)
+ * @method static MarketApi market(ApiRequest $request)
  * @method static CmApi cm(ApiRequest $request)
  * */
 class BinanceApi
