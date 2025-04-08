@@ -12,6 +12,7 @@ namespace Hsioe\QuantBinance\Tests\rest;
 use GuzzleHttp\Exception\GuzzleException;
 use Hsioe\QuantBinance\BinanceApi;
 use Hsioe\QuantBinance\Exception\ApiException;
+use Hsioe\QuantBinance\Rest\Apis\Req\AccountBillsReq;
 
 class TestAccountApi extends ApiTestCase
 {
@@ -24,8 +25,8 @@ class TestAccountApi extends ApiTestCase
     public function testGetAccountInfo(): void
     {
         $res = BinanceApi::account($this->apiRequest)->getAccountInfo();
-        foreach($res['positions'] as $position) {
-            if($position['maintMargin'] > 0) {
+        foreach ($res['positions'] as $position) {
+            if ($position['maintMargin'] > 0) {
                 print_r($position);
             }
         }
@@ -81,5 +82,21 @@ class TestAccountApi extends ApiTestCase
         $res = BinanceApi::account($this->apiRequest)->getSymbolConfig();
         print_r($res);
         $this->assertIsArray($res);
+    }
+    
+    /**
+     * 测试获取历史账单
+     *
+     * @link https://developers.binance.com/docs/zh-CN/derivatives/usds-margined-futures/account/rest-api/Get-Income-History
+     * @return void
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function testGetAccountBillsHistory(): void
+    {
+        $req = new AccountBillsReq([]);
+        $res = BinanceApi::account($this->apiRequest)->getBillsHistory($req);
+        print_r($res);
+        $this->assertTrue(true);
     }
 }

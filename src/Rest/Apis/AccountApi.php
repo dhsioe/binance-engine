@@ -11,6 +11,7 @@ namespace Hsioe\QuantBinance\Rest\Apis;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Hsioe\QuantBinance\Exception\ApiException;
+use Hsioe\QuantBinance\Rest\Apis\Req\AccountBillsReq;
 
 class AccountApi extends ApiBase
 {
@@ -107,4 +108,17 @@ class AccountApi extends ApiBase
         return $this->_request('/fapi/v1/listenKey', $method);
     }
     
+    /**
+     * 获取账户账单流水
+     *
+     * @link https://developers.binance.com/docs/zh-CN/derivatives/usds-margined-futures/account/rest-api/Get-Income-History
+     * @param AccountBillsReq $billsReq
+     * @return array
+     * @throws ApiException
+     * @throws GuzzleException
+     */
+    public function getBillsHistory(AccountBillsReq $billsReq): array
+    {
+        return $this->_request('/fapi/v1/income', 'GET', $billsReq->toArray());
+    }
 }

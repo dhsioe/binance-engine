@@ -7,7 +7,7 @@
  */
 
 
-namespace Hsioe\QuantBinance;
+namespace Hsioe\QuantBinance\Enum;
 enum BinanceErrorCodeEnum: int
 {
     case UNKNOW = -1000;
