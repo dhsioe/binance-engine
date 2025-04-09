@@ -20,7 +20,6 @@ class OrderItem
     
     protected string $side = '';
     
-    
     protected string $positionSide = '';
     
     /**
@@ -46,6 +45,18 @@ class OrderItem
      * @var string
      */
     protected string $price = '';
+    
+    /**
+     * 客户端自定义ID
+     * @var string
+     */
+    protected string $newClientOrderId = '';
+    
+    /**
+     * 时间类型
+     * @var string
+     */
+    protected string $timeInForce = '';
     
     public function setSymbol(string $symbol): void
     {
@@ -115,5 +126,25 @@ class OrderItem
     public function getPrice(): string
     {
         return $this->price;
+    }
+    
+    public function setNewClientOrderId(string $newClientOrderId): void
+    {
+        $this->newClientOrderId = $newClientOrderId;
+    }
+    
+    public function getNewClientOrderId(): string
+    {
+        return $this->newClientOrderId;
+    }
+    
+    public function getTimeInForce(): string
+    {
+        return $this->timeInForce;
+    }
+    
+    public function setTimeInForce(string $timeInForce): void
+    {
+        $this->timeInForce = $timeInForce;
     }
 }
