@@ -215,7 +215,6 @@ class BaseSocket implements WebsocketAbstract
         Timer::add($this->option['ping_interval'], function () {
             try {
                 if ($this->getFactory()->getWebsocket()->isConnectStatus()) {
-                    echo "{$this->factory->getWebsocket()->getTitle()}-{$this->factory->getWebsocket()->id}-发送ping:" . date("Y-m-d H:i:s", time()) . PHP_EOL;
                     $this->factory->getWebsocket()->incrAlreadyRunTs($this->option['ping_interval']);
                 }
             } catch (\Throwable $e) {
